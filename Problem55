@@ -1,0 +1,32 @@
+## PROBLEM 50
+
+is.prime <- function(x){
+  if(x %in% c(2,3)){ 
+       return(TRUE)
+  } else {  
+       return(min((x %% 2:floor(sqrt(x)))) > 0)
+    } 
+}
+
+is.prime <- Vectorize(FUN=is.prime)
+prime <- 2:10^6
+prime <- prime[is.prime(2:10^6)]
+
+p <- proc.time()
+#topky <- c()
+for(n in seq(max(which(cumsum(prime) < 10^6)),1,-1)){ 
+postupnost <- c(0)
+ok <- TRUE
+i <- 1
+while(ok){ 
+  if(is.prime(sum(prime[i:(i+n-1)])))  postupnost <- append(postupnost,sum(prime[i:(i+n-1)]))
+  ok <- postupnost[length(postupnost)] < 10^6  
+  i <- i + 1 
+  if((length(prime) -n) < i )  ok  <- FALSE
+}  
+if(length(postupnost) > 1 ){ print(postupnost[length(postupnost) - 1 ]) ; break}
+print(n)
+#print(postupnost)
+}
+
+proc.time() - p

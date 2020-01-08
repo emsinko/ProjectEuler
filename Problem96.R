@@ -80,7 +80,7 @@ solve_sudoku_backpropagation <- function(sudoku, num_iter = 1000){
       # Ak uz je aktualne cislo = 9      
     } else {                          
       sudoku_copy[index] <- 0 # vynuluj mi aktualne policko
-      index <- index - 1      # vrat sa o jedno policko spät
+      index <- index - 1      # vrat sa o jedno policko spÃ¤t
       helper <- -1            # zapamatanie smeru (ak by bolo predvyplnene policko vzadu, musime ho preskocit) 
     }
     
@@ -126,7 +126,7 @@ solve_sudoku_backpropagation <- function(sudoku, num_iter = 1000){
     # Ak uz je aktualne cislo = 9      
     #} else {                          
     #  sudoku_copy[index] <- 0 # vynuluj mi aktualne policko
-    #  index <- index - 1      # vrat sa o jedno policko spät
+    #  index <- index - 1      # vrat sa o jedno policko spÃ¤t
     #  helper <- -1            # zapamatanie smeru (ak by bolo predvyplnene policko vzadu, musime ho preskocit) 
   }
   #############
@@ -134,9 +134,6 @@ solve_sudoku_backpropagation <- function(sudoku, num_iter = 1000){
   print("Unsolved sudoku:")
   return(sudoku_copy)
 }
-
-
-
 
 #####
 ### Project Euler - Problem 96:
@@ -160,4 +157,3 @@ for(i in seq(from = 2, to = 492, by = 10)){
   print(paste("Solution of",(i+8)/10,"/ 50","is",ifelse(check_solution(solved_sudoku),"good.", "WRONG!!!!!!"),"Increase sum by:", as.numeric(paste(solved_sudoku[1,1:3], collapse = "")),"to :",euler_sum ))
 print(paste("Solution of project-Euler problem 96 is:",euler_sum))
 }  
-
